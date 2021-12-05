@@ -1,5 +1,5 @@
 {
-  "name": "memed-react",
+  "name": "memed-react-v2",
   "version": "3.0.5",
   "description": "React library to integrate with memed",
   "main": "lib/index.js",
