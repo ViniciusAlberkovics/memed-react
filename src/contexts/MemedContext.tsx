@@ -1,4 +1,5 @@
 import React from 'react'
+import { sendCommand } from 'src/actions'
 
 import { ModuleOptions, Patient } from '../domain'
 
@@ -11,6 +12,7 @@ export interface MemedContextValue {
   showPrescription: () => void
   hidePrescription: () => void
   loadingModule: boolean
+  sendCommand: typeof sendCommand
 }
 
 const MemedContext = React.createContext<MemedContextValue | undefined>(undefined)

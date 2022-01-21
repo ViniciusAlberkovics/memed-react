@@ -4,21 +4,23 @@ import { ModuleOptions, Patient } from '../domain'
 import { useScriptLoader, useSetupCommands, useActionButtonBind, useSetupPatient } from '../hooks'
 import MemedContext from '../contexts/MemedContext'
 
-import { cleanUp, showPrescription, hidePrescription } from '../actions'
+import { cleanUp, showPrescription, hidePrescription, sendCommand } from '../actions'
 
 interface MemedContextProviderProps {
   children: React.ReactNode
   color?: string
   scriptSrc?: string
   scriptId?: string
+  embeddedContainerId?: string
 }
 
 export default function MemedProvider(props: MemedContextProviderProps): React.ReactElement {
   const {
     children,
     color = '#00B8D6',
-    scriptSrc = 'https://sandbox.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js',
-    scriptId = 'memedScript'
+    scriptSrc = 'https://integrations.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js',
+    scriptId = 'memedScript',
+    embeddedContainerId
   } = props
 
   const [doctorToken, setDoctorToken] = React.useState('')
@@ -30,7 +32,8 @@ export default function MemedProvider(props: MemedContextProviderProps): React.R
     doctorToken,
     color,
     scriptSrc,
-    scriptId
+    scriptId,
+    embeddedContainerId
   })
 
   const { patientSet } = useSetupPatient({ patient, prescriptionLoaded })
@@ -56,7 +59,8 @@ export default function MemedProvider(props: MemedContextProviderProps): React.R
       loadingModule,
       showPrescription,
       hidePrescription,
-      setOptions
+      setOptions,
+      sendCommand
     }),
     [onLogout, loadingModule]
   )

@@ -6,7 +6,7 @@ export interface MdHub {
     unbindEvents: () => void
   }
   command: {
-    send: (moduleName: string, action: string, payload?: Patient | unknown) => Promise<void>
+    send: <T = Patient | unknown>(moduleName: string, action: string, payload?: T) => Promise<void>
     deletePatient: unknown | boolean
     removePatient: unknown | boolean
     editPatient: unknown | boolean
