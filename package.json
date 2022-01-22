@@ -1,6 +1,6 @@
 {
   "name": "memed-react-v2",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "React library to integrate with memed",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
